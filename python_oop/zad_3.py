@@ -16,7 +16,9 @@ class Property:
 
 
 class House(Property):
-    def __init__(self, area: float, rooms: int, price: float, address: str, plot: int) -> None:
+    def __init__(
+        self, area: float, rooms: int, price: float, address: str, plot: int
+    ) -> None:
         super().__init__(area, rooms, price, address)
         self.plot = plot
 
@@ -26,7 +28,9 @@ class House(Property):
 
 
 class Flat(Property):
-    def __init__(self, area: float, rooms: int, price: float, address: str, floor: int) -> None:
+    def __init__(
+        self, area: float, rooms: int, price: float, address: str, floor: int
+    ) -> None:
         super().__init__(area, rooms, price, address)
         self.floor = floor
 
@@ -51,7 +55,6 @@ if __name__ == "__main__":
         address="Kraków, ul. Słoneczna 10/5",
         floor=3,
     )
-
 
     print("Dom:")
     print(house)

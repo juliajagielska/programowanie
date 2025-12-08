@@ -6,6 +6,7 @@ import requests
 
 API_URL: str = "https://api.openbrewerydb.org/v1/breweries"
 
+
 @dataclass
 class Brewery:
     id: str
@@ -50,10 +51,16 @@ def fetch_breweries(limit: int = 20) -> List[Brewery]:
                 state=item.get("state"),
                 postal_code=item.get("postal_code"),
                 country=item.get("country"),
-                longitude=float(item["longitude"])
-                if item.get("longitude") not in (None, "")
-                else None,
-                latitude=float(item.get("latitude")) if item.get("latitude") not in (None, "") else None,
+                longitude=(
+                    float(item["longitude"])
+                    if item.get("longitude") not in (None, "")
+                    else None
+                ),
+                latitude=(
+                    float(item.get("latitude"))
+                    if item.get("latitude") not in (None, "")
+                    else None
+                ),
                 phone=item.get("phone"),
                 website_url=item.get("website_url"),
             )
@@ -66,9 +73,3 @@ if __name__ == "__main__":
     for brewery in breweries_list:
         print(brewery)
         print("-" * 40)
-
-
-
-
-
-

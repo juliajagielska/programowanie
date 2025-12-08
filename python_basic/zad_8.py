@@ -33,6 +33,7 @@ class Brewery:
             f"  www: {self.website_url}\n"
         )
 
+
 def fetch_breweries(limit: int = 20, city: Optional[str] = None) -> List[Brewery]:
     params = {"per_page": limit}
     if city:
@@ -55,12 +56,16 @@ def fetch_breweries(limit: int = 20, city: Optional[str] = None) -> List[Brewery
                 state=item.get("state"),
                 postal_code=item.get("postal_code"),
                 country=item.get("country"),
-                longitude=float(item["longitude"])
-                if item.get("longitude") not in (None, "")
-                else None,
-                latitude=float(item["latitude"])
-                if item.get("latitude") not in (None, "")
-                else None,
+                longitude=(
+                    float(item["longitude"])
+                    if item.get("longitude") not in (None, "")
+                    else None
+                ),
+                latitude=(
+                    float(item["latitude"])
+                    if item.get("latitude") not in (None, "")
+                    else None
+                ),
                 phone=item.get("phone"),
                 website_url=item.get("website_url"),
             )
@@ -79,6 +84,7 @@ def parse_args() -> argparse.Namespace:
         default=None,
     )
     return parser.parse_args()
+
 
 if __name__ == "__main__":
     args = parse_args()

@@ -1,6 +1,7 @@
 def sprawdz_sume(a: int, b: int, c: int) -> bool:
     return a + b >= c
 
+
 wynik: bool = sprawdz_sume(3, 5, 7)
 
 if wynik:
