@@ -1,2 +1,0 @@
-zmiana nr 1
-To jest mój pierwszy plik testowy
